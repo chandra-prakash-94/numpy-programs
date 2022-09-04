@@ -1,5 +1,5 @@
 """ Python program to return Upper and Lower Triangular matrix for given matrix A """
-""" Author: Chandra Prakash, M Tech (Data Science), DIAT Pune- Batch 22-24
+""" Author: Chandra Prakash, M Tech (Data Science), DIAT Pune- Batch 22-24 """
 
 import numpy as np
 A = np.array([[1,2,3],
