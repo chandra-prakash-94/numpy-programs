@@ -22,11 +22,13 @@ def row_echelon(A):
         ith_row = A[i].copy()
         A[i] = A[0]
         A[0] = ith_row
-    # We divide first row by the first element in it
-    A[0] = A[0] / A[0,0]
-    # And then, we subtract all subsequent rows with first row (it has 1 now as first element), multiplied by the corresponding element in the first column
-    A[1:] -= A[0] * A[1:,0:1]
-    # Now, we perform REF on matrix from second row, from second column
+
+    # Now, we add all subsequent rows elements, with first row elements multiplied by the multiplier m, so to make first element of below rows = 0
+    for j in range(1,len(A)):
+        m = (-1)*(A[j,0]/A[0,0])
+        A[j] = np.add(A[j],m * A[0])
+        
+    # Now, we perform REF on matrix from second row and from second column
     B = row_echelon(A[1:,1:])
 
     # Finally, we add first row and first (zero) column, and return
@@ -34,9 +36,9 @@ def row_echelon(A):
 
 
 """ Example """
-A = np.array([[1,2,3],
-              [4,5,6],
-              [7,8,9]])
+A = np.array([[1,2,-3],
+              [-3,-4,13],
+              [2,1,-5]],dtype='float')
 
 row_echelon(A)
 print(A)
